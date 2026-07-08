@@ -289,9 +289,9 @@ function drawCertificate(name, title) {
 
   ctx.fillStyle = '#334155';
   ctx.font = '500 16px "Plus Jakarta Sans", sans-serif';
-  ctx.fillText('Depok, 14 Juli 2026', sigX, sigY - 80);
-  ctx.fillText('Ketua Klaster Riset', sigX, sigY - 40);
-  ctx.fillText('Mental Health and Psychiatric Nursing', sigX, sigY - 22);
+  ctx.fillText('Depok, 14 Juli 2026', sigX, sigY - 95);
+  ctx.fillText('Ketua Klaster Riset', sigX, sigY - 70);
+  ctx.fillText('Mental Health and Psychiatric Nursing', sigX, sigY - 45);
 
   // Signature Line
   ctx.strokeStyle = '#0f172a';
