@@ -402,7 +402,7 @@ const calendarBtn = document.getElementById('calendar-btn');
 calendarBtn.addEventListener('click', () => {
   const event = {
     title: 'Workshop Strategi Penyusunan Proposal Hibah & Update Tren Riset Kesehatan Mental',
-    description: 'Mental Health & Psychiatric Research Cluster mengundang Anda ke Rapat Zoom.\\n\\nTopik: Workshop Kluster\\nID Rapat: 837 2819 9098\\nKode Sandi: 334353\\n\\nLink Zoom: https://us06web.zoom.us/j/83728199098?pwd=L4luYUOYzD1xY5QmD5NndHOrw3GfAc.1',
+    description: 'Mental Health & Psychiatric Nursing Research Cluster mengundang Anda ke Rapat Zoom.\\n\\nTopik: Workshop Kluster\\nID Rapat: 837 2819 9098\\nKode Sandi: 334353\\n\\nLink Zoom: https://us06web.zoom.us/j/83728199098?pwd=L4luYUOYzD1xY5QmD5NndHOrw3GfAc.1',
     location: 'Zoom Online Meeting (https://us06web.zoom.us/j/83728199098?pwd=L4luYUOYzD1xY5QmD5NndHOrw3GfAc.1)',
     start: '20260714T130000',
     end: '20260714T150000'
