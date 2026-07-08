@@ -289,7 +289,7 @@ function drawCertificate(name, title) {
 
   ctx.fillStyle = '#334155';
   ctx.font = '500 16px "Plus Jakarta Sans", sans-serif';
-  ctx.fillText('Depok, 14 Juli 2026', sigX, sigY - 60);
+  ctx.fillText('Depok, 14 Juli 2026', sigX, sigY - 80);
   ctx.fillText('Ketua Klaster Riset', sigX, sigY - 40);
   ctx.fillText('Mental Health and Psychiatric Nursing', sigX, sigY - 22);
 
