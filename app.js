@@ -305,8 +305,8 @@ function drawCertificate(name, title) {
   if (sigImg.complete && sigImg.naturalWidth !== 0) {
     ctx.save();
     ctx.globalCompositeOperation = 'multiply';
-    // Draw signature centered above and overlapping the line (enlarged)
-    ctx.drawImage(sigImg, sigX - 140, sigY - 35, 280, 84);
+    // Draw signature centered above and overlapping the line (enlarged even more)
+    ctx.drawImage(sigImg, sigX - 180, sigY - 50, 360, 108);
     ctx.restore();
   }
 
