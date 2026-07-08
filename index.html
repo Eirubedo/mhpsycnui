@@ -17,22 +17,27 @@
   <!-- Background Particles -->
   <canvas id="particles-canvas"></canvas>
 
-  <!-- Elegant VIP Invitation Card Intro -->
+  <!-- Elegant Virtual Envelope Intro -->
   <div class="intro-screen" id="intro-screen">
-    <div class="vip-card-container" id="envelope-container">
-      <div class="vip-card">
-        <div class="vip-card-inner">
-          <div class="vip-card-logo">
-            <img src="logo.png" alt="Logo FIK UI">
-          </div>
-          <span class="vip-card-label">KLASTER RISET MHPN FIK UI</span>
-          <h2 class="vip-card-title">WORKSHOP STRATEGI HIBAH & TREN RISET</h2>
-          <div class="vip-card-badge">UNDANGAN RESMI</div>
-          <div class="separator" style="margin: 1rem 0 0.5rem 0;">
-            <span class="separator-diamond"></span>
-          </div>
-          <p class="vip-card-cta">KLIK UNTUK MEMBUKA</p>
+    <div class="envelope-container" id="envelope-container">
+      <div class="envelope">
+        <!-- Top Flap (folds down) -->
+        <div class="envelope-flap"></div>
+        
+        <!-- Wax Seal (placed on the center join) -->
+        <div class="envelope-seal"></div>
+        
+        <!-- Invitation Card (inside, slides up) -->
+        <div class="envelope-card">
+          <span class="card-label">MHPN FIK UI</span>
+          <h3 class="card-title">Workshop Riset & Hibah</h3>
+          <p class="card-cta">KLIK UNTUK MEMBUKA</p>
         </div>
+        
+        <!-- Front Flaps (overlapping covers) -->
+        <div class="envelope-left"></div>
+        <div class="envelope-right"></div>
+        <div class="envelope-bottom"></div>
       </div>
     </div>
   </div>

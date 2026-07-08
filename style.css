@@ -90,127 +90,183 @@ body {
   pointer-events: none;
 }
 
-/* Premium VIP Invitation Card Intro */
-.vip-card-container {
-  width: 480px;
-  max-width: 90%;
-  height: 320px;
-  perspective: 1000px;
-  cursor: pointer;
-  z-index: 10;
-  transition: var(--transition-smooth);
-}
-
-.vip-card {
-  width: 100%;
-  height: 100%;
-  background: rgba(13, 17, 27, 0.7);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  border-radius: 12px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 25px rgba(212, 175, 55, 0.1);
-  padding: 1.8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Premium Virtual Envelope Intro */
+.envelope-container {
   position: relative;
+  width: 450px;
+  max-width: 95%;
+  height: 300px;
+  cursor: pointer;
+  perspective: 1000px;
   transition: var(--transition-smooth);
-  transform-style: preserve-3d;
 }
 
-.vip-card-inner {
+.envelope {
+  position: relative;
   width: 100%;
   height: 100%;
+  background-color: #0c1221;
+  border-radius: 6px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(212, 175, 55, 0.15);
-  border-radius: 8px;
-  padding: 1.2rem;
+  overflow: visible;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 155px;
+  background: #0f1729;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.6s;
+  z-index: 4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.envelope-seal {
+  position: absolute;
+  top: 130px;
+  left: calc(50% - 25px);
+  width: 50px;
+  height: 50px;
+  background: var(--gold-gradient);
+  border-radius: 50%;
+  z-index: 5;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  color: #000;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  transition: var(--transition-smooth);
+}
+
+.envelope-seal::after {
+  content: 'MHPN';
+}
+
+.envelope-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 51%;
+  height: 100%;
+  background: #0a0e1a;
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
+  z-index: 3;
+}
+
+.envelope-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 51%;
+  height: 100%;
+  background: #0a0e1a;
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+  z-index: 3;
+}
+
+.envelope-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 155px;
+  background: #0b1120;
+  clip-path: polygon(0 100%, 100% 100%, 50% 0);
+  z-index: 3;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.envelope-card {
+  position: absolute;
+  bottom: 10px;
+  left: 5%;
+  width: 90%;
+  height: 280px;
+  background: linear-gradient(135deg, #0f1524 0%, #172036 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 6px;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
+  padding: 2.5rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.05);
+  box-shadow: inset 0 0 25px rgba(212, 175, 55, 0.05);
 }
 
-.vip-card-logo {
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.5rem;
-}
-
-.vip-card-logo img {
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.1));
-}
-
-.vip-card-label {
+.envelope-card .card-label {
   font-family: var(--font-serif);
-  font-size: 0.75rem;
-  letter-spacing: 3px;
   color: var(--gold-light);
-  font-weight: 700;
-  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
 }
 
-.vip-card-title {
+.envelope-card .card-title {
   font-family: var(--font-serif-dec);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   text-align: center;
-  line-height: 1.3;
-  margin: 0.5rem 0;
   background: var(--gold-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin: 0.5rem 0;
   letter-spacing: 1px;
 }
 
-.vip-card-badge {
-  font-family: var(--font-sans);
+.envelope-card .card-cta {
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #000;
-  background: var(--gold-gradient);
-  padding: 0.3rem 1rem;
-  border-radius: 30px;
-  letter-spacing: 2px;
-  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
-}
-
-.vip-card-cta {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 4px;
-  color: var(--text-muted);
   text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-muted);
   animation: pulse 2s infinite;
-  margin-top: 0.5rem;
 }
 
-/* Hover effects */
-.vip-card-container:hover .vip-card {
-  transform: translateY(-8px) scale(1.02);
-  border-color: rgba(212, 175, 55, 0.6);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 30px rgba(212, 175, 55, 0.25);
+/* Animations for Envelope opening */
+.envelope-container.opened .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
 }
 
-/* Open transition */
-.vip-card-container.opened {
-  transform: scale(0.9) rotateY(90deg);
+.envelope-container.opened .envelope-seal {
+  transform: translateY(-80px) scale(0);
   opacity: 0;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+.envelope-container.opened .envelope-card {
+  transform: translateY(-150px) scale(1.02);
+  opacity: 1;
+  z-index: 5;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
+}
+
+/* Responsive scaling for mobile viewports */
+@media (max-width: 500px) {
+  .envelope-container {
+    transform: scale(0.85);
+    transform-origin: center;
+  }
+}
+@media (max-width: 400px) {
+  .envelope-container {
+    transform: scale(0.72);
+    transform-origin: center;
+  }
 }
 
 /* Main Webpage Invitation Container (hidden initially) */
