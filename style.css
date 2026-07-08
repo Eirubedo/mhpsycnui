@@ -90,173 +90,122 @@ body {
   pointer-events: none;
 }
 
-.envelope-container {
-  position: relative;
-  width: 450px;
-  height: 300px;
-  cursor: pointer;
+/* Premium VIP Invitation Card Intro */
+.vip-card-container {
+  width: 480px;
+  max-width: 90%;
+  height: 320px;
   perspective: 1000px;
+  cursor: pointer;
+  z-index: 10;
   transition: var(--transition-smooth);
 }
 
-.envelope {
-  position: relative;
+.vip-card {
   width: 100%;
   height: 100%;
-  background-color: #111827;
-  border-radius: 4px;
-  box-shadow: var(--shadow-dark);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.envelope-front {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
-}
-
-.envelope-front::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 225px solid transparent;
-  border-right: 225px solid transparent;
-  border-bottom: 150px solid #1f2937;
-  border-radius: 0 0 4px 4px;
-}
-
-.envelope-front::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 225px solid #1e293b;
-  border-right: 225px solid transparent;
-  border-bottom: 300px solid transparent;
-  border-top: 300px solid transparent;
-  border-radius: 4px 0 0 4px;
-  pointer-events: none;
-}
-
-.envelope-front-right::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-right: 225px solid #1e293b;
-  border-left: 225px solid transparent;
-  border-bottom: 300px solid transparent;
-  border-top: 300px solid transparent;
-  border-radius: 0 4px 4px 0;
-  pointer-events: none;
-}
-
-.envelope-flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 225px solid transparent;
-  border-right: 225px solid transparent;
-  border-top: 160px solid #111827;
-  transform-origin: top;
-  transition: transform 0.5s ease;
-  z-index: 4;
-}
-
-.envelope-seal {
-  position: absolute;
-  top: 140px;
-  left: calc(50% - 30px);
-  width: 60px;
-  height: 60px;
-  background: var(--gold-gradient);
-  border-radius: 50%;
-  z-index: 5;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  background: rgba(13, 17, 27, 0.7);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 25px rgba(212, 175, 55, 0.1);
+  padding: 1.8rem;
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-family: var(--font-serif);
-  color: #000;
-  font-weight: 800;
-  font-size: 1.2rem;
+  align-items: center;
+  position: relative;
   transition: var(--transition-smooth);
+  transform-style: preserve-3d;
 }
 
-.envelope-seal::after {
-  content: 'MHPN';
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-}
-
-.envelope-card {
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  width: 410px;
-  height: 280px;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  border: var(--border-gold);
-  border-radius: 4px;
-  z-index: 2;
-  transition: transform 0.6s ease;
-  padding: 2.5rem 1.5rem;
+.vip-card-inner {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 8px;
+  padding: 1.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.05);
+  box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.05);
 }
 
-.envelope-card h3 {
+.vip-card-logo {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.vip-card-logo img {
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.1));
+}
+
+.vip-card-label {
   font-family: var(--font-serif);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
   color: var(--gold-light);
-  letter-spacing: 2px;
-  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
-.envelope-card .title {
+.vip-card-title {
   font-family: var(--font-serif-dec);
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   text-align: center;
+  line-height: 1.3;
+  margin: 0.5rem 0;
   background: var(--gold-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin: 0.5rem 0;
+  letter-spacing: 1px;
 }
 
-.envelope-card .cta-text {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+.vip-card-badge {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #000;
+  background: var(--gold-gradient);
+  padding: 0.3rem 1rem;
+  border-radius: 30px;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+}
+
+.vip-card-cta {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 4px;
   color: var(--text-muted);
+  text-transform: uppercase;
   animation: pulse 2s infinite;
+  margin-top: 0.5rem;
 }
 
-/* Animations for Envelope opening */
-.envelope-container.opened .envelope-flap {
-  transform: rotateX(180deg);
-  z-index: 1;
+/* Hover effects */
+.vip-card-container:hover .vip-card {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 30px rgba(212, 175, 55, 0.25);
 }
 
-.envelope-container.opened .envelope-seal {
-  transform: translateY(-80px) scale(0);
+/* Open transition */
+.vip-card-container.opened {
+  transform: scale(0.9) rotateY(90deg);
   opacity: 0;
 }
 
-.envelope-container.opened .envelope-card {
-  transform: translateY(-160px);
-  z-index: 5;
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 @keyframes pulse {
