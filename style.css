@@ -36,16 +36,21 @@
 }
 
 body {
-  background-color: var(--bg-primary);
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(26, 36, 56, 0.3) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(17, 27, 47, 0.3) 0%, transparent 40%);
+  background: linear-gradient(-45deg, #05070a, #0b1120, #081a2e, #05070a);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   color: var(--text-main);
   font-family: var(--font-sans);
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Animated Particles Background */
@@ -80,7 +85,7 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 100;
-  background: radial-gradient(circle at center, rgba(13, 17, 27, 0.5) 0%, rgba(7, 9, 14, 0.85) 100%);
+  background: transparent;
   transition: var(--transition-smooth);
 }
 
