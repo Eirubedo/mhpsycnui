@@ -174,17 +174,20 @@ function sendRSVPEmails(name, title, email, attendance) {
 }
 
 function showRSVPSuccess(name, title, email, attendance) {
+  const zoomInfoSection = document.getElementById('zoom-info-section');
   rsvpFormContainer.style.display = 'none';
   rsvpSuccess.style.display = 'block';
 
   if (attendance === 'attending') {
-    successMsg.innerHTML = `Terima kasih, <strong>${name}</strong>. Kehadiran Anda telah dikonfirmasi. Tautan Zoom akan dikirimkan ke e-mail Anda.`;
+    successMsg.innerHTML = `Terima kasih, <strong>${name}</strong>. Kehadiran Anda telah dikonfirmasi. Informasi akses rapat Zoom dan sertifikat undangan Anda tersedia di bawah ini.`;
     certificateSection.style.display = 'block';
+    if (zoomInfoSection) zoomInfoSection.style.display = 'block';
     // Draw the Certificate on Canvas
     drawCertificate(name, title);
   } else {
     successMsg.innerHTML = `Terima kasih atas konfirmasi Anda, <strong>${name}</strong>. Kami menghargai tanggapan Anda dan berharap dapat bekerja sama di lain kesempatan.`;
     certificateSection.style.display = 'none';
+    if (zoomInfoSection) zoomInfoSection.style.display = 'none';
   }
 }
 
@@ -399,8 +402,8 @@ const calendarBtn = document.getElementById('calendar-btn');
 calendarBtn.addEventListener('click', () => {
   const event = {
     title: 'Workshop Strategi Penyusunan Proposal Hibah & Update Tren Riset Kesehatan Mental',
-    description: 'Workshop peningkatan kapasitas peneliti dan diskusi pendanaan hibah BRIN. Persiapan: Proposal Full atau 5 slide prototype.',
-    location: 'Zoom Online Meeting',
+    description: 'Diamond Wellcome mengundang Anda ke Rapat Zoom.\\n\\nTopik: Workshop Kluster\\nID Rapat: 837 2819 9098\\nKode Sandi: 334353\\n\\nLink Zoom: https://us06web.zoom.us/j/83728199098?pwd=L4luYUOYzD1xY5QmD5NndHOrw3GfAc.1',
+    location: 'Zoom Online Meeting (https://us06web.zoom.us/j/83728199098?pwd=L4luYUOYzD1xY5QmD5NndHOrw3GfAc.1)',
     start: '20260714T130000',
     end: '20260714T150000'
   };
