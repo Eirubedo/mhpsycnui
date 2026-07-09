@@ -317,6 +317,15 @@
     </div>
   </div>
 
+  <!-- Hidden Iframe and Form for Google Form Submission (prevents CORS and ensures 100% successful delivery) -->
+  <iframe name="hidden-iframe" id="hidden-iframe" style="display: none;"></iframe>
+  <form id="google-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSc6DUhJgKx9HsOATRJRltbbFGfjJMwyB9vOxNEHJI0c-SLTyA/formResponse" method="POST" target="hidden-iframe" style="display: none;">
+    <input type="hidden" name="entry.2133612333" id="g-name">
+    <input type="hidden" name="entry.1605076905" id="g-email">
+    <input type="hidden" name="entry.1323025" id="g-title">
+    <input type="hidden" name="entry.753491183" id="g-attendance">
+  </form>
+
   <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 

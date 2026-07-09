@@ -154,25 +154,15 @@ rsvpForm.addEventListener('submit', (e) => {
   // Submit to Google Form if URL is configured
   if (GOOGLE_FORM_URL) {
     try {
-      const params = new URLSearchParams();
-      params.append(GOOGLE_ENTRY_NAME, name);
-      params.append(GOOGLE_ENTRY_TITLE, title);
-      params.append(GOOGLE_ENTRY_EMAIL, email);
-      params.append(GOOGLE_ENTRY_ATTENDANCE, attendance === 'attending' ? 'Hadir' : 'Berhalangan Hadir');
-
-      fetch(GOOGLE_FORM_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: params
-      })
-      .then(() => {
-        console.log('RSVP successfully sent to Google Form Database.');
-      })
-      .catch((error) => {
-        console.error('Failed to submit RSVP to Google Form:', error);
-      });
+      document.getElementById('g-name').value = name;
+      document.getElementById('g-title').value = title;
+      document.getElementById('g-email').value = email;
+      document.getElementById('g-attendance').value = attendance === 'attending' ? 'Hadir' : 'Berhalangan Hadir';
+      
+      document.getElementById('google-form').submit();
+      console.log('RSVP submitted via hidden iframe.');
     } catch (err) {
-      console.error('Fetch execution error:', err);
+      console.error('Google Form iframe submission error:', err);
     }
   }
 
