@@ -5,7 +5,7 @@ const ctx = canvas.getContext('2d');
 // Google Forms RSVP Integration Configuration
 // If you want to store RSVP responses in a Google Sheet/Form, enter the Form Response URL and Field Entry IDs here.
 // Example: 'https://docs.google.com/forms/d/e/1FAIpQLSfXXXXXXXXXXXXX/formResponse'
-const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/1-p0Unc2cwFU-p0vaeZQIe6HlZ-jVhNYcPxeYgwZL_k8/formResponse'; 
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc6DUhJgKx9HsOATRJRltbbFGfjJMwyB9vOxNEHJI0c-SLTyA/formResponse'; 
 const GOOGLE_ENTRY_NAME = 'entry.2133612333';      // Nama Lengkap dan Gelar
 const GOOGLE_ENTRY_TITLE = 'entry.1323025';       // Instansi / Organisasi
 const GOOGLE_ENTRY_EMAIL = 'entry.1605076905';     // Alamat Email
