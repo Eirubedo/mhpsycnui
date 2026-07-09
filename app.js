@@ -2,6 +2,16 @@
 const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
 
+// Google Forms RSVP Integration Configuration
+// If you want to store RSVP responses in a Google Sheet/Form, enter the Form Response URL and Field Entry IDs here.
+// Example: 'https://docs.google.com/forms/d/e/1FAIpQLSfXXXXXXXXXXXXX/formResponse'
+const GOOGLE_FORM_URL = ''; 
+const GOOGLE_ENTRY_NAME = 'entry.123456789';      // Replace with your Google Form Field Entry IDs
+const GOOGLE_ENTRY_TITLE = 'entry.987654321';     // Replace with your Google Form Field Entry IDs
+const GOOGLE_ENTRY_EMAIL = 'entry.111222333';     // Replace with your Google Form Field Entry IDs
+const GOOGLE_ENTRY_ATTENDANCE = 'entry.444555666';// Replace with your Google Form Field Entry IDs
+
+
 // Preload Stamp Image
 const stampImg = new Image();
 stampImg.src = 'stamp.png';
@@ -141,6 +151,27 @@ rsvpForm.addEventListener('submit', (e) => {
   localStorage.setItem('mhpn_rsvp_email', email);
   localStorage.setItem('mhpn_rsvp_attendance', attendance);
 
+  // Submit to Google Form if URL is configured
+  if (GOOGLE_FORM_URL) {
+    const formData = new FormData();
+    formData.append(GOOGLE_ENTRY_NAME, name);
+    formData.append(GOOGLE_ENTRY_TITLE, title);
+    formData.append(GOOGLE_ENTRY_EMAIL, email);
+    formData.append(GOOGLE_ENTRY_ATTENDANCE, attendance === 'attending' ? 'Hadir' : 'Berhalangan Hadir');
+
+    fetch(GOOGLE_FORM_URL, {
+      method: 'POST',
+      mode: 'no-cors', // mode: no-cors is necessary to avoid CORS errors (submission still goes through!)
+      body: formData
+    })
+    .then(() => {
+      console.log('RSVP successfully sent to Google Form Database.');
+    })
+    .catch((error) => {
+      console.error('Failed to submit RSVP to Google Form:', error);
+    });
+  }
+
   showRSVPSuccess(name, title, email, attendance);
 });
 
@@ -179,14 +210,10 @@ function showRSVPSuccess(name, title, email, attendance) {
   rsvpSuccess.style.display = 'block';
 
   if (attendance === 'attending') {
-    successMsg.innerHTML = `Terima kasih, <strong>${name}</strong>. Kehadiran Anda telah dikonfirmasi. Informasi akses rapat Zoom dan sertifikat undangan Anda tersedia di bawah ini.`;
-    certificateSection.style.display = 'block';
+    successMsg.innerHTML = `Terima kasih, <strong>${name}</strong>. Kehadiran Anda telah dikonfirmasi. Informasi akses rapat Zoom tersedia di bawah ini.`;
     if (zoomInfoSection) zoomInfoSection.style.display = 'block';
-    // Draw the Certificate on Canvas
-    drawCertificate(name, title);
   } else {
     successMsg.innerHTML = `Terima kasih atas konfirmasi Anda, <strong>${name}</strong>. Kami menghargai tanggapan Anda dan berharap dapat bekerja sama di lain kesempatan.`;
-    certificateSection.style.display = 'none';
     if (zoomInfoSection) zoomInfoSection.style.display = 'none';
   }
 }
@@ -366,36 +393,40 @@ function drawCornerDecorations(ctx, w, h) {
 
 // Download Certificate Button
 const downloadBtn = document.getElementById('download-cert-btn');
-downloadBtn.addEventListener('click', () => {
-  const name = localStorage.getItem('mhpn_rsvp_name') || 'Undangan';
-  const fileName = `Undangan_Workshop_MHPN_FIK_UI_${name.replace(/\s+/g, '_')}.png`;
-  
-  const link = document.createElement('a');
-  link.download = fileName;
-  link.href = certCanvas.toDataURL('image/png');
-  link.click();
-});
+if (downloadBtn) {
+  downloadBtn.addEventListener('click', () => {
+    const name = localStorage.getItem('mhpn_rsvp_name') || 'Undangan';
+    const fileName = `Undangan_Workshop_MHPN_FIK_UI_${name.replace(/\s+/g, '_')}.png`;
+    
+    const link = document.createElement('a');
+    link.download = fileName;
+    link.href = certCanvas.toDataURL('image/png');
+    link.click();
+  });
+}
 
 // Send Certificate Email Button
 const emailBtn = document.getElementById('email-cert-btn');
 const emailToast = document.getElementById('email-toast');
 const toastEmailDesc = document.getElementById('toast-email-desc');
 
-emailBtn.addEventListener('click', () => {
-  const name = localStorage.getItem('mhpn_rsvp_name') || 'Peserta';
-  const title = localStorage.getItem('mhpn_rsvp_title') || '';
-  const email = localStorage.getItem('mhpn_rsvp_email') || 'ekaputri.rubedo@gmail.com';
-  const attendance = localStorage.getItem('mhpn_rsvp_attendance') || 'attending';
-  
-  sendRSVPEmails(name, title, email, attendance);
-  
-  toastEmailDesc.innerText = `Mengalihkan ke aplikasi email untuk mengirim sertifikat ke ${email}...`;
-  emailToast.classList.add('show');
-  
-  setTimeout(() => {
-    emailToast.classList.remove('show');
-  }, 4500);
-});
+if (emailBtn) {
+  emailBtn.addEventListener('click', () => {
+    const name = localStorage.getItem('mhpn_rsvp_name') || 'Peserta';
+    const title = localStorage.getItem('mhpn_rsvp_title') || '';
+    const email = localStorage.getItem('mhpn_rsvp_email') || 'ekaputri.rubedo@gmail.com';
+    const attendance = localStorage.getItem('mhpn_rsvp_attendance') || 'attending';
+    
+    sendRSVPEmails(name, title, email, attendance);
+    
+    toastEmailDesc.innerText = `Mengalihkan ke aplikasi email untuk mengirim sertifikat ke ${email}...`;
+    emailToast.classList.add('show');
+    
+    setTimeout(() => {
+      emailToast.classList.remove('show');
+    }, 4500);
+  });
+}
 
 // Add to Calendar Generator (.ics file)
 const calendarBtn = document.getElementById('calendar-btn');
