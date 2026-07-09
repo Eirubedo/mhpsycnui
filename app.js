@@ -5,7 +5,7 @@ const ctx = canvas.getContext('2d');
 // Google Forms RSVP Integration Configuration
 // If you want to store RSVP responses in a Google Sheet/Form, enter the Form Response URL and Field Entry IDs here.
 // Example: 'https://docs.google.com/forms/d/e/1FAIpQLSfXXXXXXXXXXXXX/formResponse'
-const GOOGLE_FORM_URL = ''; 
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfYourFormIDHere/formResponse'; 
 const GOOGLE_ENTRY_NAME = 'entry.123456789';      // Replace with your Google Form Field Entry IDs
 const GOOGLE_ENTRY_TITLE = 'entry.987654321';     // Replace with your Google Form Field Entry IDs
 const GOOGLE_ENTRY_EMAIL = 'entry.111222333';     // Replace with your Google Form Field Entry IDs
