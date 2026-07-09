@@ -172,7 +172,7 @@ rsvpForm.addEventListener('submit', (e) => {
 // Function to open default mail client pre-filled with RSVP details
 function sendRSVPEmails(name, title, email, attendance) {
   const statusText = attendance === 'attending' ? 'HADIR' : 'BERHALANGAN HADIR';
-  const eventTitle = "Workshop Strategi Penyusunan Proposal Hibah & Update Tren Riset Kesehatan Mental";
+  const eventTitle = "Workshop Strategi Penyusunan Proposal Hibah & Update Tren Riset Kesehatan Jiwa";
 
   const subject = encodeURIComponent(`[RSVP] ${statusText}: ${name} - ${eventTitle}`);
   
@@ -291,7 +291,7 @@ function drawCertificate(name, title) {
   ctx.fillStyle = '#0f172a';
   ctx.font = '700 26px Cinzel, Georgia, serif';
   ctx.fillText('WORKSHOP STRATEGI PENYUSUNAN PROPOSAL HIBAH', canvasWidth / 2, 430);
-  ctx.fillText('DAN UPDATE TREN RISET KESEHATAN MENTAL', canvasWidth / 2, 460);
+  ctx.fillText('DAN UPDATE TREN RISET KESEHATAN JIWA', canvasWidth / 2, 460);
 
   // Paragraph description
   ctx.fillStyle = '#334155';
@@ -426,7 +426,7 @@ if (emailBtn) {
 const calendarBtn = document.getElementById('calendar-btn');
 calendarBtn.addEventListener('click', () => {
   const event = {
-    title: 'Workshop Strategi Penyusunan Proposal Hibah & Update Tren Riset Kesehatan Mental',
+    title: 'Workshop Strategi Penyusunan Proposal Hibah & Update Tren Riset Kesehatan Jiwa',
     description: 'Mental Health & Psychiatric Nursing Research Cluster mengundang Anda ke Rapat Zoom.\\n\\nTopik: Workshop Kluster\\nID Rapat: 837 2819 9098\\nKode Sandi: 334353\\n\\nLink Zoom: https://us06web.zoom.us/j/83728199098?pwd=L4luYUOYzD1xY5QmD5NndHOrw3GfAc.1',
     location: 'Zoom Online Meeting (https://us06web.zoom.us/j/83728199098?pwd=L4luYUOYzD1xY5QmD5NndHOrw3GfAc.1)',
     start: '20260714T130000',
