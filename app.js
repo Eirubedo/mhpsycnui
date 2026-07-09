@@ -153,16 +153,19 @@ rsvpForm.addEventListener('submit', (e) => {
 
   // Submit to Google Form if URL is configured
   if (GOOGLE_FORM_URL) {
-    const formData = new FormData();
-    formData.append(GOOGLE_ENTRY_NAME, name);
-    formData.append(GOOGLE_ENTRY_TITLE, title);
-    formData.append(GOOGLE_ENTRY_EMAIL, email);
-    formData.append(GOOGLE_ENTRY_ATTENDANCE, attendance === 'attending' ? 'Hadir' : 'Berhalangan Hadir');
+    const params = new URLSearchParams();
+    params.append(GOOGLE_ENTRY_NAME, name);
+    params.append(GOOGLE_ENTRY_TITLE, title);
+    params.append(GOOGLE_ENTRY_EMAIL, email);
+    params.append(GOOGLE_ENTRY_ATTENDANCE, attendance === 'attending' ? 'Hadir' : 'Berhalangan Hadir');
 
     fetch(GOOGLE_FORM_URL, {
       method: 'POST',
-      mode: 'no-cors', // mode: no-cors is necessary to avoid CORS errors (submission still goes through!)
-      body: formData
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: params
     })
     .then(() => {
       console.log('RSVP successfully sent to Google Form Database.');
