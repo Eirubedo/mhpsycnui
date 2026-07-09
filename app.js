@@ -9,7 +9,7 @@ const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc6DUhJgKx9HsO
 const GOOGLE_ENTRY_NAME = 'entry.2133612333';      // Nama Lengkap dan Gelar
 const GOOGLE_ENTRY_TITLE = 'entry.1323025';       // Instansi / Organisasi
 const GOOGLE_ENTRY_EMAIL = 'entry.1605076905';     // Alamat Email
-const GOOGLE_ENTRY_ATTENDANCE = 'entry.289401135'; // Status Kehadiran
+const GOOGLE_ENTRY_ATTENDANCE = 'entry.753491183'; // Status Kehadiran (derived from sentinel entry.753491183_sentinel)
 
 
 // Preload Stamp Image
