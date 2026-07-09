@@ -5,7 +5,7 @@ const ctx = canvas.getContext('2d');
 // Google Forms RSVP Integration Configuration
 // If you want to store RSVP responses in a Google Sheet/Form, enter the Form Response URL and Field Entry IDs here.
 // Example: 'https://docs.google.com/forms/d/e/1FAIpQLSfXXXXXXXXXXXXX/formResponse'
-const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc6DUhJgKx9HsOATRJRltbbFGfjJMwyB9vOxNEHJI0c-SLTyA/formResponse'; 
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSc6DUhJgKx9HsOATRJRltbbFGfjJMwyB9vOxNEHJI0c-SLTyA/formResponse'; 
 const GOOGLE_ENTRY_NAME = 'entry.2133612333';      // Nama Lengkap dan Gelar
 const GOOGLE_ENTRY_TITLE = 'entry.1323025';       // Instansi / Organisasi
 const GOOGLE_ENTRY_EMAIL = 'entry.1605076905';     // Alamat Email
@@ -153,26 +153,27 @@ rsvpForm.addEventListener('submit', (e) => {
 
   // Submit to Google Form if URL is configured
   if (GOOGLE_FORM_URL) {
-    const params = new URLSearchParams();
-    params.append(GOOGLE_ENTRY_NAME, name);
-    params.append(GOOGLE_ENTRY_TITLE, title);
-    params.append(GOOGLE_ENTRY_EMAIL, email);
-    params.append(GOOGLE_ENTRY_ATTENDANCE, attendance === 'attending' ? 'Hadir' : 'Berhalangan Hadir');
+    try {
+      const params = new URLSearchParams();
+      params.append(GOOGLE_ENTRY_NAME, name);
+      params.append(GOOGLE_ENTRY_TITLE, title);
+      params.append(GOOGLE_ENTRY_EMAIL, email);
+      params.append(GOOGLE_ENTRY_ATTENDANCE, attendance === 'attending' ? 'Hadir' : 'Berhalangan Hadir');
 
-    fetch(GOOGLE_FORM_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: params
-    })
-    .then(() => {
-      console.log('RSVP successfully sent to Google Form Database.');
-    })
-    .catch((error) => {
-      console.error('Failed to submit RSVP to Google Form:', error);
-    });
+      fetch(GOOGLE_FORM_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: params
+      })
+      .then(() => {
+        console.log('RSVP successfully sent to Google Form Database.');
+      })
+      .catch((error) => {
+        console.error('Failed to submit RSVP to Google Form:', error);
+      });
+    } catch (err) {
+      console.error('Fetch execution error:', err);
+    }
   }
 
   showRSVPSuccess(name, title, email, attendance);
